@@ -10,34 +10,20 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sun, 02 Nov 2025 10:59:41 +0800</pubDate>
-        <lastBuildDate>Sun, 02 Nov 2025 10:59:41 +0800</lastBuildDate>
+        <pubDate>Sat, 01 Nov 2025 11:40:23 +0800</pubDate>
+        <lastBuildDate>Sat, 01 Nov 2025 11:40:23 +0800</lastBuildDate>
         <category term="博客" />
         <category term="学习笔记" />
         <item>
-            <guid isPermalink="true">http://example.com/2025/11/02/Test2/</guid>
-            <title>Test2</title>
-            <link>http://example.com/2025/11/02/Test2/</link>
-            <category term="blog1" scheme="http://example.com/categories/blog1/" />
-            <category term="test" scheme="http://example.com/tags/test/" />
-            <pubDate>Sun, 02 Nov 2025 10:59:41 +0800</pubDate>
-            <description><![CDATA[  ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">http://example.com/2025/11/01/hello-world/</guid>
-            <title>Hello World</title>
-            <link>http://example.com/2025/11/01/hello-world/</link>
+            <guid isPermalink="true">http://example.com/2025/11/01/%E5%90%AF%E8%88%AA%E4%B9%8B%E7%AB%A0/</guid>
+            <title>启航之章</title>
+            <link>http://example.com/2025/11/01/%E5%90%AF%E8%88%AA%E4%B9%8B%E7%AB%A0/</link>
+            <category term="分享" scheme="http://example.com/categories/%E5%88%86%E4%BA%AB/" />
+            <category term="学习及生活笔记" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E5%8F%8A%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" />
             <pubDate>Sat, 01 Nov 2025 11:40:23 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;Welcome to &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvLw==&#34;&gt;Hexo&lt;/span&gt;! This is your very first post. Check &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv&#34;&gt;documentation&lt;/span&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=&#34;&gt;troubleshooting&lt;/span&gt; or you can ask me on &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==&#34;&gt;GitHub&lt;/span&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;quick-start&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#quick-start&#34;&gt;#&lt;/a&gt; Quick Start&lt;/h2&gt;
-&lt;h3 id=&#34;create-a-new-post&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#create-a-new-post&#34;&gt;#&lt;/a&gt; Create a new post&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo new &lt;span class=&#34;token string&#34;&gt;&#34;My New Post&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s&#34;&gt;Writing&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;run-server&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#run-server&#34;&gt;#&lt;/a&gt; Run server&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo server&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=&#34;&gt;Server&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;generate-static-files&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#generate-static-files&#34;&gt;#&lt;/a&gt; Generate static files&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo generate&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s&#34;&gt;Generating&lt;/span&gt;&lt;/p&gt;
-&lt;h3 id=&#34;deploy-to-remote-sites&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-to-remote-sites&#34;&gt;#&lt;/a&gt; Deploy to remote sites&lt;/h3&gt;
-&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;span&gt;h&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;$ hexo deploy&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;More info: &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s&#34;&gt;Deployment&lt;/span&gt;&lt;/p&gt;
+            <description><![CDATA[ &lt;p&gt;这是我的第一篇博客文章&lt;/p&gt;
+&lt;h2 id=&#34;我为什么想写博客&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#我为什么想写博客&#34;&gt;#&lt;/a&gt; 我为什么想写博客？&lt;/h2&gt;
+&lt;p&gt;那当然是觉得写博客这件事很帅啊，当然最主要的原因还是想要通过博客来让更多人了解 ctf, 同时我现在也只是一个刚刚入门技术还挺菜的一个小登。我希望通过写博客的方式能够使自己的思路更加清晰，技术能够得到一些提升，当然因为我现在还只是一个新手，所以写的一些东西也肯定是比较基础的，也就入门级别吧。因此如果对 ctf 感兴趣的话，也可以和我一起学，毕竟现在对于怎样入门和一些学习方向也大致了解了一些。同时我也觉得，分享技术是一件非常有意义的事情。&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
