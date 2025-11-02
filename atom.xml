@@ -8,9 +8,18 @@
     <author>
       <name>Pretend</name>
     </author>
-    <updated>2025-11-01T03:40:23.242Z</updated>
+    <updated>2025-11-02T02:59:41.000Z</updated>
     <category term="博客" />
     <category term="学习笔记" />
+    <entry>
+        <id>http://example.com/2025/11/02/Test2/</id>
+        <title>Test2</title>
+        <link rel="alternate" href="http://example.com/2025/11/02/Test2/"/>
+        <content type="html"></content>
+        <category term="blog1" scheme="http://example.com/categories/blog1/" />
+        <category term="test" scheme="http://example.com/tags/test/" />
+        <updated>2025-11-02T02:59:41.000Z</updated>
+    </entry>
     <entry>
         <id>http://example.com/2025/11/01/hello-world/</id>
         <title>Hello World</title>

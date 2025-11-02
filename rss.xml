@@ -10,10 +10,19 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Sat, 01 Nov 2025 11:40:23 +0800</pubDate>
-        <lastBuildDate>Sat, 01 Nov 2025 11:40:23 +0800</lastBuildDate>
+        <pubDate>Sun, 02 Nov 2025 10:59:41 +0800</pubDate>
+        <lastBuildDate>Sun, 02 Nov 2025 10:59:41 +0800</lastBuildDate>
         <category term="博客" />
         <category term="学习笔记" />
+        <item>
+            <guid isPermalink="true">http://example.com/2025/11/02/Test2/</guid>
+            <title>Test2</title>
+            <link>http://example.com/2025/11/02/Test2/</link>
+            <category term="blog1" scheme="http://example.com/categories/blog1/" />
+            <category term="test" scheme="http://example.com/tags/test/" />
+            <pubDate>Sun, 02 Nov 2025 10:59:41 +0800</pubDate>
+            <description><![CDATA[  ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2025/11/01/hello-world/</guid>
             <title>Hello World</title>
