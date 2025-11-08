@@ -7,12 +7,14 @@
     "home_page_url": "http://example.com",
     "items": [
         {
-            "id": "http://example.com/2025/11/02/test/",
-            "url": "http://example.com/2025/11/02/test/",
-            "title": "test",
-            "date_published": "2025-11-02T07:30:39.000Z",
-            "content_html": "",
-            "tags": []
+            "id": "http://example.com/2025/11/08/2025UofTCTFreverse%E5%A4%8D%E7%8E%B0/",
+            "url": "http://example.com/2025/11/08/2025UofTCTFreverse%E5%A4%8D%E7%8E%B0/",
+            "title": "2025UofTCTFreverse复现",
+            "date_published": "2025-11-08T03:21:54.000Z",
+            "content_html": "<h1 id=\"highly-optimized\"><a class=\"anchor\" href=\"#highly-optimized\">#</a> Highly Optimized</h1>\n<p>首先将下载的附件拖入 ida 进行反编译，然后对 main 函数进行分析可知该文件实现了一个自定义的的、基于栈的虚拟机。它通过一个极其低效的减法循环来计算一个大数对一个小数的取模结果。因此通过题目的暗示和分析绝对不能直接运行这个程序而是应该编写一个 Python 脚本，遍历字节码，提取出每一对 LARGE_NUM 和 SMALL_NUM，然后直接用 Python 的 % 运算符计算出结果，最后将所有结果字符拼接起来，就是最终的 flag。</p>\n<pre><code># 1. 定义从可执行文件中提取出的字节码数据\nqword_4020 = [\n    0, 0xCFFB289AF4B1D1, 0, 0x83, 2, 1, 0, 0x83, 3, 4, 9, 5,\n    0, 0x955F7E7A2ABC09, 0, 0x82, 2, 1, 0, 0x82, 3, 4, 9, 5,\n    0, 0x171D0EEF6E34564, 0, 0x92, 2, 1, 0, 0x92, 3, 4, 9, 5,\n    0, 0x1C8C0106F982D2C, 0, 0x78, 2, 1, 0, 0x78, 3, 4, 9, 5,\n    0, 0x1A3DF010DB43D50, 0, 0x79, 2, 1, 0, 0x79, 3, 4, 9, 5,\n    0, 0x70D52B655429D4, 0, 0xA0, 2, 1, 0, 0xA0, 3, 4, 9, 5,\n    0, 0x86BA083DB4A00E, 0, 0x8F, 2, 1, 0, 0x8F, 3, 4, 9, 5,\n    0, 0x1EE6D244821E17E, 0, 0x93, 2, 1, 0, 0x93, 3, 4, 9, 5,\n    0, 0x21F3E25788406B2, 0, 0x8A, 2, 1, 0, 0x8A, 3, 4, 9, 5,\n    0, 0x13C0021E70D77B4, 0, 0xA3, 2, 1, 0, 0xA3, 3, 4, 9, 5,\n    0, 0x27EDD2385F658C6, 0, 0xAA, 2, 1, 0, 0xAA, 3, 4, 9, 5,\n    0, 0xA07DA21EF9E1B4, 0, 0x34, 2, 1, 0, 0x34, 3, 4, 9, 5,\n    0, 0xD00E8519E9CC06, 0, 0x41, 2, 1, 0, 0x41, 3, 4, 9, 5,\n    0, 0xD6DFC3F1E11375, 0, 0x78, 2, 1, 0, 0x78, 3, 4, 9, 5,\n    0, 0xEFAA53300DA663, 0, 0x8D, 2, 1, 0, 0x8D, 3, 4, 9, 5,\n    0, 0x7568123DB27DB8, 0, 0x89, 2, 1, 0, 0x89, 3, 4, 9, 5,\n    0, 0xF174602422164A, 0, 0x87, 2, 1, 0, 0x87, 3, 4, 9, 5,\n    0, 0x9B991D46E343EE, 0, 0x75, 2, 1, 0, 0x75, 3, 4, 9, 5,\n    0, 0x16C43FB0F9B780, 0, 0x44, 2, 1, 0, 0x44, 3, 4, 9, 5,\n    0, 0x10C7B1796D09C04, 0, 0x44, 2, 1, 0, 0x44, 3, 4, 9, 5,\n    0, 0x5F5CFCF58C8717, 0, 0x7A, 2, 1, 0, 0x7A, 3, 4, 9, 5,\n    0, 0xD715FDA1220CE0, 0, 0x93, 2, 1, 0, 0x93, 3, 4, 9, 5,\n    6 # HALT instruction\n]\n\n# 2. 初始化一个空字符串来存储flag\nflag = &quot;&quot;\n\n# 3. 循环遍历字节码，每次跳过一个完整的计算块（12个元素）\n#    一个块的结构是 [0, 大数, 0, 小数, ..., 5]\nfor i in range(0, len(qword_4020) - 1, 12):\n    # 提取大数和小数\n    large_number = qword_4020[i + 1]\n    small_number = qword_4020[i + 3]\n\n    # 4. 用高效的取模运算直接计算结果\n    char_code = large_number % small_number\n\n    # 5. 将计算出的ASCII码转换为字符，并拼接到flag字符串上\n    flag += chr(char_code)\n\n# 6. 打印最终结果\nprint(&quot;成功破解！Flag 是:&quot;)\nprint(flag)\n</code></pre>\n",
+            "tags": [
+                "write up"
+            ]
         },
         {
             "id": "http://example.com/2025/11/01/%E5%90%AF%E8%88%AA%E4%B9%8B%E7%AB%A0/",
