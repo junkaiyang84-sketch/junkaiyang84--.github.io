@@ -10,10 +10,75 @@
         </author>
         <description></description>
         <language>zh-CN</language>
-        <pubDate>Mon, 24 Nov 2025 11:48:26 +0800</pubDate>
-        <lastBuildDate>Mon, 24 Nov 2025 11:48:26 +0800</lastBuildDate>
+        <pubDate>Wed, 26 Nov 2025 14:27:31 +0800</pubDate>
+        <lastBuildDate>Wed, 26 Nov 2025 14:27:31 +0800</lastBuildDate>
         <category term="博客" />
         <category term="学习笔记" />
+        <item>
+            <guid isPermalink="true">http://example.com/2025/11/26/Reverse%E8%8A%B1%E6%8C%87%E4%BB%A4/</guid>
+            <title>Reverse花指令</title>
+            <link>http://example.com/2025/11/26/Reverse%E8%8A%B1%E6%8C%87%E4%BB%A4/</link>
+            <category term="分享" scheme="http://example.com/categories/%E5%88%86%E4%BA%AB/" />
+            <category term="学习及生活笔记" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E5%8F%8A%E7%94%9F%E6%B4%BB%E7%AC%94%E8%AE%B0/" />
+            <pubDate>Wed, 26 Nov 2025 14:27:31 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;reverse花指令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#reverse花指令&#34;&gt;#&lt;/a&gt; Reverse 花指令&lt;/h1&gt;
+&lt;h2 id=&#34;花指令&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#花指令&#34;&gt;#&lt;/a&gt; 花指令&lt;/h2&gt;
+&lt;p&gt;花指令是反调试的一种基本的方法。其存在是干扰选手静态分析，但不会影响程序的运行。实质就是一串垃圾指令，它与程序本身的功能无关，并不影响程序本身的逻辑。在软件保护中，花指令被作为一种手段来增加静态分析的难度。IDA 并不能正常识别花指令，导致可看可分析代码被破坏，因此需要我们自己去分析一下。&lt;/p&gt;
+&lt;p&gt;花指令⼀般分两类，会被执行和不会被执行（垃圾指令）。&lt;/p&gt;
+&lt;h2 id=&#34;会被执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#会被执行&#34;&gt;#&lt;/a&gt; &lt;strong&gt;会被执行&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;这类花指令本身是正常的汇编指令，它们运行完后不会改变原来程序的堆栈 / 寄存器，但能起到干扰静态分析的作用。一般分为两种:&lt;br /&gt;
+ 形式一：改变堆栈操作&lt;br /&gt;
+形式二：利用 call 指令或 jmp 指令增加执行流复杂度&lt;/p&gt;
+&lt;h2 id=&#34;形式一&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#形式一&#34;&gt;#&lt;/a&gt; &lt;strong&gt;形式一&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight csharp&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;built_in&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;main&lt;/span&gt;()&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    _asm&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        push eax;&lt;span class=&#34;comment&#34;&gt;//随便压一个入栈&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;add&lt;/span&gt; esp,&lt;span class=&#34;number&#34;&gt;4&lt;/span&gt;;&lt;span class=&#34;comment&#34;&gt;//把他弹出来&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    printf(&lt;span class=&#34;string&#34;&gt;&amp;quot;hello word\n&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+&lt;img data-src=&#34;/images/1.png&#34; alt=&#34;1&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;形式二&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#形式二&#34;&gt;#&lt;/a&gt; &lt;strong&gt;形式二&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;执行 call 指令时会向堆栈中压入返回地址，我们可以修改这个返回地址，配合 ret 指令跳转到任意一个想去的地方。&lt;br /&gt;
+示例代码：&lt;br /&gt;
+&lt;figure class=&#34;highlight sqf&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;#&lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt; &amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;int main()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable&#34;&gt;_asm&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;built_in&#34;&gt;call&lt;/span&gt; xxx &lt;span class=&#34;comment&#34;&gt;//call进去xxx&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    xxx:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        add [esp],&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;x7 &lt;span class=&#34;comment&#34;&gt;//修改他的esp的返回地址，直接跳到+7的位置&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        retn&lt;span class=&#34;comment&#34;&gt;//ret直接返回不执行下面的代码&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable&#34;&gt;_emit&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;x12 &lt;span class=&#34;comment&#34;&gt;//无意义指令，就是告诉cpu我要在这放这个字节&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable&#34;&gt;_emit&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;x34&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    printf(&lt;span class=&#34;string&#34;&gt;&amp;quot;hello world\n&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+&lt;img data-src=&#34;/images/2.png&#34; alt=&#34;2&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;可以看到 ida 把 12h 34h 68h 这三个指令认在⼀起了，68h 是下⼀个的⼆进制指令，⽽ 12h 34h 是⽆意义的，原本应该是 68 00 21 40 00 是⼀条 push 指令，所以就导致 ida 把这个识别成数据了。&lt;br /&gt;
+add esp+7 可以数⼀下也是到 68 这个地址&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;/images/3.png&#34; alt=&#34;3&#34; /&gt;&lt;br /&gt;
+ 按 u 可以把这个地址切换⼀下&lt;br /&gt;
+&lt;img data-src=&#34;/images/4.png&#34; alt=&#34;4&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;然后在 68 按 c，就能正常的识别 push 指令&lt;br /&gt;
+&lt;img data-src=&#34;/images/5.png&#34; alt=&#34;5&#34; /&gt;&lt;br /&gt;
+ 把这一串全部 nop 掉&lt;br /&gt;
+&lt;a href=&#34;/images/6.png&#34;&gt; 6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;再把 main 函数修改到正确的地址 (直接按 u 和 p 创建函数)&lt;/p&gt;
+&lt;h2 id=&#34;不会被执行&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#不会被执行&#34;&gt;#&lt;/a&gt; &lt;strong&gt;不会被执行&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;。&lt;/p&gt;
+&lt;h2 id=&#34;形式一-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#形式一-2&#34;&gt;#&lt;/a&gt; &lt;strong&gt;形式一&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;⽰例代码 （VS 中 Release32 位下编译）&lt;br /&gt;
+&lt;figure class=&#34;highlight cpp&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;meta&#34;&gt;#&lt;span class=&#34;keyword&#34;&gt;include&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;function&#34;&gt;&lt;span class=&#34;type&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;title&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;params&#34;&gt;()&lt;/span&gt;&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    _asm&amp;#123;&lt;span class=&#34;comment&#34;&gt;//内联汇编&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;keyword&#34;&gt;xor&lt;/span&gt; eax,eax; &lt;span class=&#34;comment&#34;&gt;//亦或就是0 ZF=1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        jz s; &lt;span class=&#34;comment&#34;&gt;//jz判断zf=1就会跳转&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        add esp,&lt;span class=&#34;number&#34;&gt;0x11&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;//这里不会被执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    s:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;built_in&#34;&gt;printf&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&amp;quot;hello world\n&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ida 打开会反编译失败&lt;br /&gt;
+因为 ida 会认为你这个 add esp +11h 到⼀个很下⾯的位置了&lt;br /&gt;
+导致 sub_401010 不知道有⼏个参数，从⽽导致反编译失败&lt;br /&gt;
+&lt;img data-src=&#34;/images/7.png&#34; alt=&#34;7&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决⽅法⼀&lt;/strong&gt;&lt;br /&gt;
+进⼊ sub_401010 函数，F5 反编译⼀下，让 ida 重新认识这个函数&lt;br /&gt;
+再进 main 函数就能识别了&lt;br /&gt;
+&lt;img data-src=&#34;/images/8.png&#34; alt=&#34;8&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;解决方法二&lt;/strong&gt;&lt;br /&gt;
+把 add 直接 nop 掉&lt;br /&gt;
+&lt;img data-src=&#34;/images/9.png&#34; alt=&#34;9&#34; /&gt;&lt;/p&gt;
+&lt;h2 id=&#34;形式二-2&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#形式二-2&#34;&gt;#&lt;/a&gt; &lt;strong&gt;形式⼆&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;figure class=&#34;highlight sqf&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;int main()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &lt;span class=&#34;variable&#34;&gt;_asm&lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        xor eax,eax;&lt;span class=&#34;comment&#34;&gt;//亦或完=0 ZF标志位=1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        jz xxx ;ZF&lt;span class=&#34;comment&#34;&gt;//标志位=1跳转&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable&#34;&gt;_emit&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;x11;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable&#34;&gt;_emit&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;x22;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;        &lt;span class=&#34;variable&#34;&gt;_emit&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;x33; &lt;span class=&#34;comment&#34;&gt;//垃圾代码，但是这个是xor的操作码，但是这里不会被执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    xxx:&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;    print(&lt;span class=&#34;string&#34;&gt;&amp;quot;helloworld \n&amp;quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;&amp;#125;    &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;br /&gt;
+ 因为这个 xor 是操作码，ida 向下分析会把下⾯的操作码给吸上来&lt;br /&gt;
+看到有个红色&lt;br /&gt;
+有个 xor jz +1&lt;br /&gt;
+ 就可以想到是花指令&lt;br /&gt;
+&lt;img data-src=&#34;/images/10.png&#34; alt=&#34;10&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;把 jz 给按 u 掉就能正常识别了，再把 11 22 33 nop 掉&lt;br /&gt;
+&lt;img data-src=&#34;/images/11.png&#34; alt=&#34;11&#34; /&gt;&lt;br /&gt;
+ 再修改 main 的范围&lt;br /&gt;
+如果修改 main 函数范围，中间有个函数识别错了&lt;br /&gt;
+可以按 u 把 main 函数 u&lt;br /&gt;
+ 再按 p 创建函数应该就能识别了&lt;br /&gt;
+对抗花指令最好的办法就是找到花指令给他 nop 掉&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://example.com/2025/11/24/PatriotCTF-2025/</guid>
             <title>PatriotCTF 2025</title>
